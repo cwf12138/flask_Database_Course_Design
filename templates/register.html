@@ -1,0 +1,69 @@
+<!-- todo! register.html 停止使用 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户注册</title>
+    <style type="text/css">
+        body{
+            background: url("static/css/gris3.jpg") no-repeat center center fixed;
+                /*兼容浏览器版本*/
+                -webkit-background-size: cover;
+                -o-background-size: cover;                
+                background-size: cover;
+        }
+        .div1 {
+            height:400px;
+            width:380px;
+            border:2px solid #8A8989;
+            margin:0 auto;
+        }
+        .input {
+            display: block;
+            width:350px;
+            height:40px;
+            margin:20px auto;
+            color:black;
+            font-size:18px;
+            /* background-color: transparent; */
+            border: 0;
+        }
+        .button {
+            background: #2066C5;
+            color:white;
+            font-size:18px;
+            font-weight: bold;
+            height: 50px;
+            border-radius: 4px;
+            /* color: blueviolet; */
+        }
+        .alert {
+     position: relative;
+     padding: 0.75rem 1.25rem;
+     margin-bottom: 1rem;
+     border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+     }
+        </style>
+</head>
+<body>
+
+    <div class="div1">
+        <form action="{{ url_for('Register') }}" method="post">
+            <input type="text" class="input" name="Cname" placeholder="请输入名字" required>
+            <input type="text" class="input" name="Csex" placeholder="请输入性别" required>
+            <input type="text" class="input" name="Cphone" placeholder="请输入电话号码(必须为11位)" required>
+            <input type="text" class="input" name="Cid" placeholder="请输入身份证号(必须为18位)" required>
+            <input type="password" class="input" name="Cpsword" placeholder="请输入密码" required>
+            <input type="submit" value="注册" class="input button">
+        </form>
+        {% for message in get_flashed_messages() %}
+        <p class="alert">{{ message }}</p>
+        {% endfor %}
+   </div>
+</body>
+</html>
